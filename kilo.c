@@ -62,6 +62,10 @@ struct editorConfig {
 };
 struct editorConfig E;
 
+/*** prototypes ***/
+
+void editorSetStatusMessage(const char *fmt, ...);
+
 /*** terminal ***/
 
 void die(const char *s) {
@@ -532,7 +536,7 @@ int main(int argc, char *argv[]) {
   if (argc >= 2) {
     editorOpen(argv[1]);
   }
-  
+
   editorSetStatusMessage("HELP: Ctrl-S = save | Ctrl-Q = quit");
   
   while (1) {
