@@ -287,9 +287,7 @@ void editorDrawRows(struct abuf *ab) {
       abAppend(ab, &E.row[filerow].render[E.coloff], len);
     }
     abAppend(ab, "\x1b[K", 3);
-    if (y < E.screenrows - 1) {
       abAppend(ab, "\r\n", 2);
-    }
   }
 }
 
@@ -396,6 +394,7 @@ void initEditor() {
   E.numrows = 0;
   E.row = NULL;
   if (getWindowSize(&E.screenrows, &E.screencols) == -1) die("getWindowSize");
+  E.screenrows -= 1;
 }
 
 int main(int argc, char *argv[]) {
